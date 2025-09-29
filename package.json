@@ -1,0 +1,23 @@
+{
+  "name": "chronosense",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A lightweight, self-hosted Application Performance Monitoring (APM) system.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "apm",
+    "monitoring",
+    "performance",
+    "typescript",
+    "nodejs",
+    "java",
+    "python"
+  ],
+  "author": "AgnesMillie",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ]
+}
