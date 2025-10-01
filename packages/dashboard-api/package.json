@@ -6,8 +6,9 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "echo 'Build script not implemented yet'",
-    "start:dev": "echo 'Dev script not implemented yet'",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "start:dev": "nodemon src/index.ts",
     "test": "echo 'Test script not implemented yet'"
   },
   "dependencies": {
