@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { app } from './index';
+import { app } from './app';
 
 describe('GET /', () => {
   it('should respond with a 200 status code and the welcome message', async () => {
