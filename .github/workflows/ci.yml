@@ -1,0 +1,44 @@
+# Nome do nosso workflow, que aparecerá na aba "Actions" do GitHub
+name: Chronosense CI Pipeline
+
+# Define os gatilhos (triggers) que iniciam o workflow
+on:
+  # Executa em pushes para o branch 'main'
+  push:
+    branches: [ "main" ]
+  # Executa também em pull requests direcionados ao branch 'main'
+  pull_request:
+    branches: [ "main" ]
+
+# Define os trabalhos (jobs) a serem executados
+jobs:
+  # Nosso job se chama 'build-and-test'
+  build-and-test:
+    # O job rodará em uma máquina virtual Ubuntu mais recente
+    runs-on: ubuntu-latest
+
+    # Define os passos sequenciais que o job executará
+    steps:
+      # Passo 1: Clona o código do seu repositório para a máquina virtual
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Passo 2: Configura o ambiente Node.js na versão 20
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          # Usa o cache do npm para acelerar futuras instalações
+          cache: 'npm'
+
+      # Passo 3: Instala as dependências do projeto de forma otimizada para CI
+      - name: Install dependencies
+        run: npm ci
+
+      # Passo 4: Executa o linter para o nosso pacote da API
+      - name: Run linter
+        run: npm run lint -w @chronosense/dashboard-api
+
+      # Passo 5: Executa os testes automatizados
+      - name: Run tests
+        run: npm test -w @chronosense/dashboard-api
