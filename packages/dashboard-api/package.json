@@ -13,7 +13,8 @@
     "lint:fix": "eslint \"src/**/*.ts\" --fix",
     "format": "prettier --check \"src/**/*.ts\"",
     "format:fix": "prettier --write \"src/**/*.ts\"",
-    "test": "echo 'Test script not implemented yet'"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "express": "^4.17.1"
