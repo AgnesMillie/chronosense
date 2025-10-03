@@ -1,0 +1,24 @@
+# Ignore dependências do Node
+node_modules
+npm-debug.log
+
+# Ignore arquivos de build locais
+dist
+build
+
+# Ignore arquivos de configuração e de ambiente
+.env
+.vscode
+.idea
+
+# Ignore arquivos do Git e do Docker
+.git
+.gitignore
+.github
+Dockerfile
+.dockerignore
+
+# Ignore arquivos de log e de sistema operacional
+*.log
+.DS_Store
+Thumbs.db
