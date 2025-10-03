@@ -72,3 +72,6 @@ Thumbs.db
 .env.local
 .env.*.local
 !.env.example
+
+# Docker persistent data
+/.pgdata

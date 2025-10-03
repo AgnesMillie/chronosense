@@ -1,0 +1,21 @@
+services:
+  # Define o serviço do nosso banco de dados
+  db:
+    # Usa a imagem oficial do PostgreSQL 15, na versão Alpine (leve)
+    image: postgres:15-alpine
+    # Garante que o contêiner reinicie automaticamente se falhar
+    restart: always
+    # Carrega as variáveis de ambiente do nosso arquivo .env
+    env_file:
+      - .env
+    # Mapeia a porta do nosso computador (host) para a porta do contêiner
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    # Cria um volume para persistir os dados do banco de dados
+    # Isso garante que os dados não sejam perdidos ao parar/remover o contêiner
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+# Define os volumes nomeados para garantir a persistência dos dados
+volumes:
+  pgdata:
