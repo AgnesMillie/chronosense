@@ -8,8 +8,10 @@ const pool = new Pool({
   database: process.env.POSTGRES_DB,
 });
 
-// Exportamos um objeto 'db' que expõe um método 'query'.
-// Isso cria uma abstração simples sobre o pool.
+// Abstração para executar queries
 export const db = {
   query: (text: string, params?: any[]) => pool.query(text, params),
 };
+
+// Exporta o pool para que possamos gerenciá-lo (ex: fechar a conexão nos testes)
+export { pool };

@@ -1,9 +1,14 @@
 import request from 'supertest';
 import format from 'pg-format';
 import { app } from './app';
-import { db } from './lib/db';
+import { db, pool } from './lib/db';
 
 describe('API Endpoints', () => {
+  // Hook que executa UMA VEZ após TODOS os testes deste arquivo terminarem
+  afterAll(async () => {
+    await pool.end(); // Fecha a conexão com o banco de dados
+  });
+
   // Teste para a rota GET / (Health Check)
   describe('GET /', () => {
     it('should respond with a 200 status code and the welcome message', async () => {
