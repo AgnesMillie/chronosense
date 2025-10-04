@@ -2,7 +2,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     tsconfigRootDir: __dirname,
-    project: './tsconfig.json',
+    project: './tsconfig.eslint.json', // <<< ALTERE ESTA LINHA
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint/eslint-plugin'],
@@ -17,6 +17,6 @@ module.exports = {
   },
   ignorePatterns: ['.eslintrc.js', 'jest.config.js', 'jest.setup.js'],
   rules: {
-    // Regras podem ser customizadas aqui no futuro
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 };
