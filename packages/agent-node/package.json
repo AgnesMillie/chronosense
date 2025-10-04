@@ -1,0 +1,17 @@
+{
+  "name": "@chronosense/agent-node",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A lightweight Node.js agent for collecting and sending telemetry data to the Chronosense APM.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "echo 'Build script not implemented yet'",
+    "test": "echo 'Test script not implemented yet'"
+  },
+  "dependencies": {
+    "axios": "^1.7.2"
+  },
+  "author": "AgnesMillie",
+  "license": "MIT"
+}
