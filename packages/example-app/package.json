@@ -1,0 +1,21 @@
+{
+  "name": "@chronosense/example-app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An example application that uses the Chronosense agent to send data.",
+  "main": "dist/index.js",
+  "scripts": {
+    "start:dev": "nodemon src/index.ts",
+    "build": "echo 'Build script not implemented yet'",
+    "test": "echo 'Test script not implemented yet'"
+  },
+  "dependencies": {
+    "@chronosense/agent-node": "0.1.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13"
+  },
+  "author": "AgnesMillie",
+  "license": "MIT"
+}
