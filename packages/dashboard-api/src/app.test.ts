@@ -87,18 +87,38 @@ describe('API Endpoints', () => {
       const testSpan = {
         trace_id: 'get-test-trace-id',
         span_id: 'get-test-span-id',
+        parent_span_id: null,
         service_name: 'test-service',
         operation_name: 'test-op',
         start_time: new Date().toISOString(),
         end_time: new Date().toISOString(),
         duration_ms: 100,
+        kind: 'SERVER',
         status: 'OK',
         attributes: JSON.stringify({ key: 'value' }),
+        error: null,
       };
+
+      // CORREÇÃO: Passa cada valor como um argumento separado para o format
       const sql = format(
-        'INSERT INTO spans (trace_id, span_id, service_name, operation_name, start_time, end_time, duration_ms, status, attributes) VALUES (%L)',
-        [Object.values(testSpan)],
+        `INSERT INTO spans (
+          trace_id, span_id, parent_span_id, service_name, operation_name, 
+          start_time, end_time, duration_ms, kind, status, attributes, error
+        ) VALUES (%L, %L, %L, %L, %L, %L, %L, %L, %L, %L, %L, %L)`,
+        testSpan.trace_id,
+        testSpan.span_id,
+        testSpan.parent_span_id,
+        testSpan.service_name,
+        testSpan.operation_name,
+        testSpan.start_time,
+        testSpan.end_time,
+        testSpan.duration_ms,
+        testSpan.kind,
+        testSpan.status,
+        testSpan.attributes,
+        testSpan.error,
       );
+
       await db.query(sql);
 
       // 2. Chamar a API
