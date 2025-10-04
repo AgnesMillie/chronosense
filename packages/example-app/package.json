@@ -6,8 +6,12 @@
   "main": "dist/index.js",
   "scripts": {
     "start:dev": "nodemon src/index.ts",
-    "build": "echo 'Build script not implemented yet'",
-    "test": "echo 'Test script not implemented yet'"
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "eslint \"src/**/*.ts\"",
+    "lint:fix": "eslint \"src/**/*.ts\" --fix",
+    "format": "prettier --check \"src/**/*.ts\"",
+    "format:fix": "prettier --write \"src/**/*.ts\"",
+    "test": "echo 'No tests configured for example-app'"
   },
   "dependencies": {
     "@chronosense/agent-node": "0.1.0",
