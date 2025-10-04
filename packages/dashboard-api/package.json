@@ -18,11 +18,13 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "pg": "^8.16.3"
+    "pg": "^8.16.3",
+    "pg-format": "^1.0.4"
   },
   "author": "AgnesMillie",
   "devDependencies": {
     "@types/pg": "^8.15.5",
+    "@types/pg-format": "^1.0.5",
     "dotenv": "^17.2.3"
   }
 }
