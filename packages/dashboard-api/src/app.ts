@@ -1,20 +1,21 @@
-import express, { Request, Response, Application } from 'express';
+import express, { Application } from 'express';
 import format from 'pg-format';
+import cors from 'cors';
 import { db } from './lib/db';
 
 const app: Application = express();
 
+app.use(cors());
 app.use(express.json());
 
 // Rota de Health Check
-app.get('/', (req: Request, res: Response) => {
+app.get('/', (req, res) => {
   res.status(200).json({ message: 'Chronosense Dashboard API is running!' });
 });
 
-// Nova Rota de Consulta de Spans
-app.get('/spans', async (req: Request, res: Response) => {
+// Rota de Consulta de Spans
+app.get('/spans', async (req, res) => {
   try {
-    // Consulta todos os spans, ordenando pelos mais recentes primeiro
     const { rows } = await db.query(
       'SELECT * FROM spans ORDER BY start_time DESC',
     );
@@ -26,7 +27,7 @@ app.get('/spans', async (req: Request, res: Response) => {
 });
 
 // Rota de Ingestão de Dados
-app.post('/ingest', async (req: Request, res: Response) => {
+app.post('/ingest', async (req, res) => {
   const spans = req.body;
 
   if (!Array.isArray(spans) || spans.length === 0) {
